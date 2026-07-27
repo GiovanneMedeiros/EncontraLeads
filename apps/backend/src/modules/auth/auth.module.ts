@@ -5,6 +5,7 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './infrastructure/controllers/AuthController';
 import { LoginUseCase } from './application/usecases/LoginUseCase';
+import { SignupUseCase } from './application/usecases/SignupUseCase';
 import { GoogleAuthUseCase } from './application/usecases/GoogleAuthUseCase';
 import { UserRepository } from './infrastructure/repositories/UserRepository';
 import { IUserRepository } from './domain/IUserRepository';
@@ -13,6 +14,7 @@ import { IUserRepository } from './domain/IUserRepository';
   controllers: [AuthController],
   providers: [
     LoginUseCase,
+    SignupUseCase,
     GoogleAuthUseCase,
     {
       provide: 'IUserRepository',

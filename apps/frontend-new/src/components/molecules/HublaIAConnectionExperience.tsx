@@ -24,7 +24,7 @@ const STORY_STEPS = [
     icon: User,
   },
   {
-    title: 'HublaIA',
+    title: 'Encontra Leads',
     text: 'Entendendo o atendimento...',
     accent: 'from-violet-500/20 to-violet-500/5',
     icon: Sparkles,
@@ -230,7 +230,7 @@ export function HublaIAConnectionExperience({ className }: { className?: string 
           viewport={{ once: true, margin: '-120px' }}
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-sky-300/80">
-            HublaIA Connection Experience
+            Encontra Leads Connection Experience
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-neutral-white sm:text-4xl lg:text-5xl">
             Uma plataforma. Toda a sua operação conectada.
@@ -327,7 +327,7 @@ export function HublaIAConnectionExperience({ className }: { className?: string 
                 ))}
 
                 <div className="absolute left-5 top-5 rounded-full border border-sky-300/15 bg-sky-400/8 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-sky-100/80 backdrop-blur-xl">
-                  Cliente → HublaIA → Profissional
+                  Cliente → Encontra Leads → Profissional
                 </div>
 
                 <motion.div

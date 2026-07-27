@@ -28,9 +28,6 @@ export class RegisterDTO {
 
   @IsString()
   lastName: string;
-
-  @IsString()
-  tenantId: string;
 }
 
 export class RefreshTokenDTO {

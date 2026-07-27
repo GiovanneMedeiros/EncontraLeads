@@ -8,10 +8,10 @@ async function main() {
 
   const company = await prisma.company.create({
     data: {
-      name: 'HublaIA Demo - Imobiliária XYZ',
-      slug: 'hublaia-demo',
-      email: 'contato@hublaia-demo.com',
-      billingEmail: 'billing@hublaia-demo.com',
+      name: 'Encontra Leads Demo - Imobiliária XYZ',
+      slug: 'encontraleads-demo',
+      email: 'contato@encontraleads-demo.com',
+      billingEmail: 'billing@encontraleads-demo.com',
       country: 'BR',
       state: 'SP',
       city: 'São Paulo',
@@ -24,7 +24,7 @@ async function main() {
   const adminUser = await prisma.user.create({
     data: {
       tenantId: company.id,
-      email: 'admin@hublaia-demo.com',
+      email: 'admin@encontraleads-demo.com',
       password: hashedPassword,
       firstName: 'Admin',
       lastName: 'Demo',

@@ -52,7 +52,7 @@ export default function RealEstatePropertyProvidersPage() {
           <div>
             <h1 className="text-3xl font-semibold">Conecte seus imoveis</h1>
             <p className="mt-2 text-sm text-neutral-gray">
-              Escolha como deseja disponibilizar seus imoveis para o HublaIA.
+              Escolha como deseja disponibilizar seus imoveis para o Encontra Leads.
             </p>
           </div>
           <Button variant="secondary" onClick={() => router.push('/onboarding')}>

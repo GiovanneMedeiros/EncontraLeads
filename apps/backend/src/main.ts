@@ -19,7 +19,7 @@ async function bootstrap() {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HublaIA Backend</title>
+  <title>Encontra Leads Backend</title>
   <style>
     :root {
       color-scheme: dark;
@@ -144,7 +144,7 @@ async function bootstrap() {
 </head>
 <body>
   <main>
-    <div class="badge">HublaIA Backend</div>
+    <div class="badge">Encontra Leads Backend</div>
     <h1>Servidor pronto para uso.</h1>
     <p>
       A API NestJS está ativa e pronta para receber requisições. As rotas principais
@@ -168,7 +168,7 @@ async function bootstrap() {
 
     <div class="status">
       <div><span class="dot"></span>Backend online</div>
-      <div>HublaIA • local development</div>
+      <div>Encontra Leads • local development</div>
     </div>
   </main>
 </body>
@@ -221,7 +221,7 @@ async function bootstrap() {
   await app.listen(port);
 
   loggerService.log(
-    `🚀 HublaIA Backend iniciado com sucesso em http://localhost:${port}`,
+    `🚀 Encontra Leads Backend iniciado com sucesso em http://localhost:${port}`,
     'NestApplication'
   );
   loggerService.log(`📊 Documentação em http://localhost:${port}/api/docs`, 'NestApplication');

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/atoms';
 import { Button } from '@/components/atoms';
 import { CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/cn';
@@ -15,7 +14,6 @@ export interface PricingCardProps {
   badge?: string;
   features: string[];
   buttonText: string;
-  buttonVariant?: 'primary' | 'secondary' | 'ghost';
   isHighlighted?: boolean;
   annualSavings?: string;
   onCtaClick?: () => void;
@@ -31,7 +29,6 @@ export const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
       badge,
       features,
       buttonText,
-      buttonVariant = 'secondary',
       isHighlighted = false,
       annualSavings,
       onCtaClick,
@@ -40,52 +37,38 @@ export const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
   ) => (
     <motion.div
       ref={ref}
-      className={cn(
-        'relative h-full',
-        isHighlighted && '-translate-y-4'
-      )}
+      className={cn('relative h-full', isHighlighted && 'lg:-translate-y-3')}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      {/* Gradient Border Effect (subtle) */}
-      {isHighlighted && (
-        <div
-          className="absolute inset-0 rounded-2xl p-px"
-          style={{
-            background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.3) 0%, rgba(124, 58, 237, 0.2) 100%)',
-          }}
-        >
-          <div className="absolute inset-0 rounded-2xl bg-bg-primary" />
-        </div>
-      )}
-
-      <Card
-        className={cn(
-          'relative h-full overflow-hidden rounded-2xl p-8 transition-all duration-300',
-          isHighlighted
-            ? 'border-primary-500/30 bg-gradient-to-br from-bg-secondary/95 to-bg-secondary/85 shadow-xl shadow-primary-500/10'
-            : 'border-bg-tertiary bg-bg-secondary hover:border-bg-tertiary hover:shadow-lg'
-        )}
-      >
-        {/* Badge */}
-        {badge && (
-          <motion.div
-            className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-500/10 px-3 py-1 text-xs font-medium text-primary-300 border border-primary-500/20"
+      {badge && (
+        <div className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2">
+          <motion.span
+            className="inline-flex items-center whitespace-nowrap rounded-full bg-brand-emerald px-4 py-1 text-xs font-semibold text-white shadow-md shadow-brand-emerald/30"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
           >
             {badge}
-          </motion.div>
-        )}
+          </motion.span>
+        </div>
+      )}
 
+      <div
+        className={cn(
+          'relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-8 transition-all duration-300',
+          isHighlighted
+            ? 'border-2 border-brand-emerald shadow-xl shadow-brand-emerald/10'
+            : 'border-brand-border shadow-sm hover:-translate-y-1 hover:shadow-lg'
+        )}
+      >
         {/* Header */}
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-neutral-white">{name}</h3>
-          <p className="mt-2 text-sm text-neutral-gray">{description}</p>
+          <h3 className="text-2xl font-bold text-brand-ink">{name}</h3>
+          <p className="mt-2 text-sm text-brand-slate">{description}</p>
         </div>
 
         {/* Pricing */}
@@ -99,20 +82,20 @@ export const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
           >
             {typeof price === 'number' ? (
               <>
-                <span className="text-5xl font-bold text-neutral-white">
+                <span className="text-5xl font-bold text-brand-ink">
                   R$ {price.toLocaleString('pt-BR')}
                 </span>
-                <span className="text-neutral-gray">/{period === 'monthly' ? 'mês' : 'ano'}</span>
+                <span className="text-brand-slate">/{period === 'monthly' ? 'mês' : 'ano'}</span>
               </>
             ) : (
-              <span className="text-3xl font-bold text-neutral-white">{price}</span>
+              <span className="text-3xl font-bold text-brand-ink">{price}</span>
             )}
           </motion.div>
 
           {/* Savings Badge */}
           {annualSavings && period === 'annual' && (
             <motion.p
-              className="text-sm text-primary-300 font-medium"
+              className="text-sm font-medium text-brand-forest"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
@@ -129,14 +112,11 @@ export const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
           whileTap={{ scale: 0.98 }}
         >
           <Button
-            variant={isHighlighted ? 'primary' : buttonVariant}
+            variant={isHighlighted ? 'brand' : 'brandOutline'}
             size="lg"
             fullWidth
             onClick={onCtaClick}
-            className={cn(
-              'transition-all duration-300',
-              isHighlighted && 'shadow-lg shadow-primary-500/30'
-            )}
+            className="transition-all duration-300"
           >
             {buttonText}
           </Button>
@@ -153,22 +133,12 @@ export const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
               transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
             >
-              <CheckCircle className="h-5 w-5 flex-shrink-0 text-primary-500 mt-0.5" />
-              <span className="text-sm text-neutral-gray">{feature}</span>
+              <CheckCircle className="h-5 w-5 flex-shrink-0 text-brand-emerald mt-0.5" />
+              <span className="text-sm text-brand-slate">{feature}</span>
             </motion.div>
           ))}
         </div>
-
-        {/* Hover Effect */}
-        {!isHighlighted && (
-          <motion.div
-            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-            style={{
-              background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, transparent 100%)',
-            }}
-          />
-        )}
-      </Card>
+      </div>
     </motion.div>
   )
 );

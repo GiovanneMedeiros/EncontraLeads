@@ -43,6 +43,20 @@ const config = {
           white: '#FFFFFF',
           gray: '#CBD5E1',
         },
+        // Marketing/landing site palette (dark navy + green). Additive only —
+        // the app shell above keeps using primary/accent/bg.
+        brand: {
+          bg: '#03131A',
+          petrol: '#06242B',
+          forest: '#064E3B',
+          green: '#10B981',
+          emerald: '#18C77A',
+          mint: '#6EE7B7',
+          light: '#F8FAF9',
+          border: '#DDE5E2',
+          ink: '#111827',
+          slate: '#64748B',
+        },
       },
       fontFamily: {
         inter: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],

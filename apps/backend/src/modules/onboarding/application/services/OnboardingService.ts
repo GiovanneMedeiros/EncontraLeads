@@ -290,9 +290,9 @@ export class OnboardingService {
   }
 
   async getPropertyProviders(tenantId: string): Promise<OnboardingStateDTO['propertyProviders']> {
-    const context = await this.getState(tenantId);
+    const context = await this.tenantModuleService.getTenantContext(tenantId);
 
-    if (context.tenant.businessType !== 'REAL_ESTATE') {
+    if (context.businessType !== 'REAL_ESTATE') {
       return [];
     }
 
@@ -434,6 +434,7 @@ export class OnboardingService {
         brokersConfigured: Boolean(payload.brokersConfigured),
         routingConfigured: Boolean(payload.routingConfigured),
         regions: this.normalizeArray(payload.regions),
+        propertyTypes: this.normalizeArray(payload.propertyTypes),
         priceRanges: this.normalizeArray(payload.priceRanges),
         configureLater: Boolean(payload.configureLater),
       };
@@ -781,6 +782,7 @@ export class OnboardingService {
       brokersConfigured: Boolean(config.brokersConfigured),
       routingConfigured: Boolean(config.routingConfigured),
       regions: Array.isArray(config.regions) ? config.regions : [],
+      propertyTypes: Array.isArray(config.propertyTypes) ? config.propertyTypes : [],
       priceRanges: Array.isArray(config.priceRanges) ? config.priceRanges : [],
       configureLater: Boolean(config.configureLater),
     };

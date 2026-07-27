@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Button, Card, Input, Badge, Avatar } from '@/components/atoms';
+import { Button, Card, Input, Badge, Avatar, Logo } from '@/components/atoms';
 import { authService } from '@/services/auth.service';
 import {
   LogOut,
@@ -86,8 +86,8 @@ export default function SettingsPage() {
                 )}
               </button>
 
-              <Link href="/dashboard" className="flex items-center gap-2">
-                <span className="text-lg font-bold text-neutral-white">HublaIA</span>
+              <Link href="/dashboard">
+                <Logo size="sm" />
               </Link>
             </div>
 
@@ -189,9 +189,9 @@ export default function SettingsPage() {
 
                     <div className="grid gap-6 md:grid-cols-2">
                       <Input label="Nome" defaultValue="Admin Demo" />
-                      <Input label="Email" defaultValue="admin@hublaia-demo.com" />
+                      <Input label="Email" defaultValue="admin@encontraleads-demo.com" />
                       <Input label="Telefone" defaultValue="+55 11 98765-4321" />
-                      <Input label="Empresa" defaultValue="HublaIA Demo" />
+                      <Input label="Empresa" defaultValue="Encontra Leads Demo" />
                     </div>
 
                     <Button className="mt-6">Salvar Alterações</Button>

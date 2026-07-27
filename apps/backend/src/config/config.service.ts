@@ -156,7 +156,7 @@ export class ConfigService {
   }
 
   get smtpFrom(): string {
-    return this.env.SMTP_FROM || 'noreply@hublaia.com';
+    return this.env.SMTP_FROM || 'noreply@encontraleads.com';
   }
 
   // Logging

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/cn';
+import { ANNUAL_SAVINGS_LABEL } from '@/constants';
 
 export interface PricingToggleProps {
   onToggle?: (isAnnual: boolean) => void;
@@ -28,7 +29,7 @@ export const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps
         >
           {/* Background slide */}
           <motion.div
-            className="absolute inset-y-1 w-1/2 rounded-full bg-primary-500/20 border border-primary-500/30"
+            className="absolute inset-y-1 w-1/2 rounded-full bg-brand-emerald/20 border border-brand-emerald/30"
             initial={false}
             animate={{
               x: isAnnual ? '100%' : '0%',
@@ -71,14 +72,14 @@ export const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps
 
         {/* Savings Badge */}
         <motion.div
-          className="text-sm text-primary-300 font-medium"
+          className="text-sm text-brand-mint font-medium"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: isAnnual ? 1 : 0, scale: isAnnual ? 1 : 0.8 }}
           transition={{ duration: 0.2 }}
         >
           {isAnnual && (
             <>
-              💰 Economize 2 meses
+              💰 {ANNUAL_SAVINGS_LABEL}
               <span className="ml-2 text-xs text-neutral-gray">
                 (até 16% de economia)
               </span>

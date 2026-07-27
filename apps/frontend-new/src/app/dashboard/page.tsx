@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Button, Card, Badge, Avatar } from '@/components/atoms';
+import { Button, Card, Badge, Avatar, Logo } from '@/components/atoms';
 import { AnalyticsChart } from '@/components/molecules';
 import { leadsService, agentsService } from '@/services';
 import { authService } from '@/services/auth.service';
@@ -141,12 +141,7 @@ export default function DashboardPage() {
                 )}
               </button>
 
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500">
-                  <MessageSquare className="h-5 w-5 text-white" />
-                </div>
-                <span className="text-lg font-bold text-neutral-white">HublaIA</span>
-              </div>
+              <Logo size="sm" />
             </div>
 
             <div className="flex items-center gap-4">

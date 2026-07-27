@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'HublaIA - AI WhatsApp Automation',
+  title: 'Encontra Leads - AI WhatsApp Automation',
   description: 'Transform conversations into opportunities with AI-powered WhatsApp automation.',
   keywords: [
     'WhatsApp',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'Chatbot',
   ],
   openGraph: {
-    title: 'HublaIA - AI WhatsApp Automation',
+    title: 'Encontra Leads - AI WhatsApp Automation',
     description: 'Transform conversations into opportunities with AI-powered WhatsApp automation.',
     type: 'website',
   },

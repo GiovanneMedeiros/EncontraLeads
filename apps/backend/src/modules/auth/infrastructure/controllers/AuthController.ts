@@ -6,8 +6,9 @@ import { Controller, Post, Body, HttpCode, HttpStatus, Get, Req, Res, Query } fr
 import type { Request, Response } from 'express';
 import { randomBytes } from 'crypto';
 import { LoginUseCase } from '../../application/usecases/LoginUseCase';
+import { SignupUseCase } from '../../application/usecases/SignupUseCase';
 import { GoogleAuthUseCase } from '../../application/usecases/GoogleAuthUseCase';
-import { LoginDTO, AuthResponseDTO } from '../../application/dtos/AuthDTOs';
+import { LoginDTO, RegisterDTO, AuthResponseDTO } from '../../application/dtos/AuthDTOs';
 import { IApiResponse } from '@shared/types';
 import { Public } from '@shared/infrastructure/decorators';
 import { ConfigService } from '@config/config.service';
@@ -34,9 +35,44 @@ interface GoogleExchangeDTO {
 export class AuthController {
   constructor(
     private loginUseCase: LoginUseCase,
+    private signupUseCase: SignupUseCase,
     private googleAuthUseCase: GoogleAuthUseCase,
     private configService: ConfigService
   ) {}
+
+  @Public()
+  @Post('signup')
+  @HttpCode(HttpStatus.OK)
+  async signup(
+    @Body() dto: RegisterDTO,
+    @Res({ passthrough: true }) res: Response
+  ): Promise<IApiResponse<AuthResponseDTO>> {
+    const result = await this.signupUseCase.execute(dto);
+
+    if (result.isFailure) {
+      return {
+        success: false,
+        error: {
+          code: 'SIGNUP_FAILED',
+          message: result.error,
+        },
+        timestamp: new Date().toISOString(),
+      };
+    }
+
+    const response = result.getValue();
+
+    res.setHeader('Set-Cookie', [
+      this.buildCookie('hublaia_access_token', response.accessToken, 60 * 60),
+      this.buildCookie('hublaia_refresh_token', response.refreshToken, 60 * 60 * 24 * 7),
+    ]);
+
+    return {
+      success: true,
+      data: response,
+      timestamp: new Date().toISOString(),
+    };
+  }
 
   @Public()
   @Post('login')

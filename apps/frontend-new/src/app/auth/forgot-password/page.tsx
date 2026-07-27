@@ -7,8 +7,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { Button, Input, Card } from '@/components/atoms';
-import { MessageSquare, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Button, Input, Card, Logo } from '@/components/atoms';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 
 const forgotPasswordSchema = z.object({
   email: z.string().email('Email inválido'),
@@ -65,8 +65,8 @@ export default function ForgotPasswordPage() {
             <span className="text-sm text-neutral-gray">Voltar</span>
           </Link>
 
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-500 mx-auto mb-4">
-            <MessageSquare className="h-6 w-6 text-white" />
+          <div className="mb-4 flex justify-center">
+            <Logo size="lg" showText={false} />
           </div>
           <h1 className="text-3xl font-bold text-neutral-white">Recuperar Senha</h1>
           <p className="mt-2 text-neutral-gray">

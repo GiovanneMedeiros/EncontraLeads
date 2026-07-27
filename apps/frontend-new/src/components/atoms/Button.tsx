@@ -17,6 +17,10 @@ const buttonVariants = cva(
         danger: 'bg-status-red text-white hover:bg-red-600 active:bg-red-700',
         outline:
           'border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white active:bg-primary-600',
+        brand:
+          'bg-brand-emerald text-white hover:bg-brand-green active:bg-brand-forest shadow-md shadow-brand-emerald/20 hover:shadow-lg hover:shadow-brand-emerald/30',
+        brandOutline:
+          'border-2 border-brand-emerald text-brand-emerald bg-transparent hover:bg-brand-emerald hover:text-white active:bg-brand-forest active:border-brand-forest',
       },
       size: {
         xs: 'px-3 py-1.5 text-xs h-8',

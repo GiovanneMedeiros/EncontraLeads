@@ -7,7 +7,7 @@ import { Button, Card, Input, Badge } from '@/components/atoms';
 import { authService } from '@/services/auth.service';
 import { onboardingService } from '@/services/onboarding.service';
 import { BusinessType, OnboardingState, OnboardingStep } from '@/types';
-import { Building2, CheckCircle2, Sparkles, Home, Users, Route, MapPin, CircleDollarSign } from 'lucide-react';
+import { Building2, CheckCircle2, Sparkles, Home, Users, Route, MapPin, CircleDollarSign, Tag } from 'lucide-react';
 
 const FALLBACK_STEPS: OnboardingStep[] = [
   'company',
@@ -183,7 +183,7 @@ export default function OnboardingPage() {
             <p className="text-xs uppercase tracking-[0.2em]">Setup inteligente</p>
           </div>
 
-          <h1 className="mt-3 text-2xl font-semibold">Onboarding HublaIA</h1>
+          <h1 className="mt-3 text-2xl font-semibold">Onboarding Encontra Leads</h1>
           <p className="mt-2 text-sm text-neutral-gray">
             Núcleo compartilhado e módulos dinâmicos por segmento para sua operação.
           </p>
@@ -285,7 +285,7 @@ export default function OnboardingPage() {
               <header>
                 <h2 className="text-2xl font-semibold">Selecione o Segmento</h2>
                 <p className="text-sm text-neutral-gray mt-1">
-                  O HublaIA habilitará automaticamente os módulos relevantes para sua empresa.
+                  O Encontra Leads habilitará automaticamente os módulos relevantes para sua empresa.
                 </p>
               </header>
 
@@ -378,6 +378,26 @@ export default function OnboardingPage() {
                       updateDraft(
                         'segmentModules',
                         'regions',
+                        e.target.value
+                          .split(',')
+                          .map((item) => item.trim())
+                          .filter(Boolean)
+                      )
+                    }
+                  />
+                </Card>
+
+                <Card className="p-4 border border-bg-tertiary md:col-span-2">
+                  <div className="flex items-center gap-2 text-primary-400"><Tag className="h-4 w-4" /> Tipos de imóveis</div>
+                  <p className="text-sm text-neutral-gray mt-2">Configure os tipos de imóveis que sua imobiliária trabalha.</p>
+                  <Input
+                    className="mt-3"
+                    placeholder="Ex.: Apartamento, Casa, Terreno, Comercial"
+                    value={draft.segmentModules.propertyTypes?.join(', ') || ''}
+                    onChange={(e) =>
+                      updateDraft(
+                        'segmentModules',
+                        'propertyTypes',
                         e.target.value
                           .split(',')
                           .map((item) => item.trim())
@@ -563,7 +583,7 @@ export default function OnboardingPage() {
               <div className="rounded-xl border border-primary-500/30 bg-primary-500/10 p-4">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-primary-300" />
-                  <p className="text-sm font-medium text-primary-300">Recomendação HublaIA</p>
+                  <p className="text-sm font-medium text-primary-300">Recomendação Encontra Leads</p>
                 </div>
                 <div className="mt-2 text-sm text-neutral-gray flex items-center gap-2">
                   <span>Personalidade ideal:</span>

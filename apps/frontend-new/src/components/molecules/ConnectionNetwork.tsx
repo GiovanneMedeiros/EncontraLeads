@@ -67,7 +67,7 @@ export function ConnectionNetwork() {
       });
 
       // Desenhar linhas de conexão
-      ctx.strokeStyle = 'rgba(79, 70, 229, 0.15)';
+      ctx.strokeStyle = 'rgba(24, 199, 122, 0.15)';
       ctx.lineWidth = 1;
 
       nodesRef.current.forEach((node, i) => {
@@ -87,8 +87,8 @@ export function ConnectionNetwork() {
       nodesRef.current.forEach((node) => {
         // Glow background
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 3);
-        gradient.addColorStop(0, `rgba(79, 70, 229, 0.3)`);
-        gradient.addColorStop(1, `rgba(79, 70, 229, 0)`);
+        gradient.addColorStop(0, `rgba(24, 199, 122, 0.3)`);
+        gradient.addColorStop(1, `rgba(24, 199, 122, 0)`);
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -96,7 +96,7 @@ export function ConnectionNetwork() {
         ctx.fill();
 
         // Nó principal
-        ctx.fillStyle = '#4F46E5';
+        ctx.fillStyle = '#18C77A';
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();

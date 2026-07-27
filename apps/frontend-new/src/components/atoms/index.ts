@@ -12,3 +12,6 @@ export type { BadgeProps } from './Badge';
 
 export { Avatar } from './Avatar';
 export type { AvatarProps } from './Avatar';
+
+export { Logo } from './Logo';
+export type { LogoProps } from './Logo';

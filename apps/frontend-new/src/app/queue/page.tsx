@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Badge, Avatar, Card } from '@/components/atoms';
+import { Badge, Avatar, Card, Logo } from '@/components/atoms';
 import { leadsService } from '@/services';
 import { authService } from '@/services/auth.service';
 import { Lead } from '@/types';
@@ -115,8 +115,8 @@ export default function QueuePage() {
                 )}
               </button>
 
-              <Link href="/dashboard" className="flex items-center gap-2">
-                <span className="text-lg font-bold text-neutral-white">HublaIA</span>
+              <Link href="/dashboard">
+                <Logo size="sm" />
               </Link>
             </div>
 
